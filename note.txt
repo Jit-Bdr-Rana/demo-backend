@@ -1,0 +1,19 @@
+cli setup
+npm i -g @nestjs/cli
+
+project setup
+nest new project-name
+
+mogodb orm (mongoose) package
+npm i @nestjs/mongoose mongoose
+
+swagger ui / api documentation
+npm install --save @nestjs/swagger
+
+
+
+
+
+
+run script
+npm run start:dev
