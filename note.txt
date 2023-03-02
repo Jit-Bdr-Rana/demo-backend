@@ -12,8 +12,5 @@ npm install --save @nestjs/swagger
 
 
 
-
-
-
 run script
 npm run start:dev

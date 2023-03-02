@@ -18,5 +18,5 @@ export class CreateEmployeeDto {
   age: number;
 
   @ApiProperty()
-  gender: number;
+  gender: string;
 }

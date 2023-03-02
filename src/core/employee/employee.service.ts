@@ -13,23 +13,30 @@ export class EmployeeService {
   ) {}
 
   create(createEmployeeDto: CreateEmployeeDto) {
-    const employe = this.employeeModal.create(createEmployeeDto);
+    const employe = this.employeeModal.create({
+      name:createEmployeeDto.name,
+      address:createEmployeeDto.address,
+      email:createEmployeeDto.email,
+      gender:createEmployeeDto.gender,
+      phone:createEmployeeDto.phone,
+    });
     return employe;
   }
 
   findAll() {
-    return `This action returns all employee`;
+    //similar to select * from employees
+    return this.employeeModal.find({},{__v:0})  
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} employee`;
+  findOne(id: string) {
+    return this.employeeModal.findOne({_id:id});
   }
 
-  update(id: number, updateEmployeeDto: UpdateEmployeeDto) {
-    return `This action updates a #${id} employee`;
+  update(id:string, updateEmployeeDto: UpdateEmployeeDto) {
+    return this.employeeModal.updateOne(updateEmployeeDto,{_id:id});
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} employee`;
+  remove(id: string) {
+    return this.employeeModal.deleteOne({_id:id})
   }
 }

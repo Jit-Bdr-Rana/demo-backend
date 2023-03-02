@@ -8,7 +8,7 @@ import { PayrollModule } from './core/payroll/payroll.module';
 @Module({
   imports: [
     //mongo db url over here where demo-backend-database is our db and will be created automatically
-    MongooseModule.forRoot('mongodb://localhost:27017/demo-backend-database'),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/demo-backend-database'),
     // all the module that comes in future need to be  import over here
     EmployeeModule,
     PayrollModule,
