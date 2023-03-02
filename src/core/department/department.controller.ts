@@ -8,28 +8,30 @@ import {
   Delete,
   Res,
 } from '@nestjs/common';
-import { PayrollService } from './payroll.service';
-import { CreatePayrollDto } from './dto/create-payroll.dto';
-import { UpdatePayrollDto } from './dto/update-payroll.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
+import { DepartmentService } from './department.service';
+import { CreateDepartmentDto } from './dto/create-department.dto';
+import { UpdateDepartmentDto } from './dto/update-department.dto';
 
-@ApiTags('payroll')
-@Controller('payroll')
-export class PayrollController {
-  constructor(private readonly payrollService: PayrollService) {}
+@ApiTags('department')
+@Controller('department')
+export class DepartmentController {
+  constructor(private readonly departmentService: DepartmentService) {}
 
   @Post()
   async create(
-    @Body() createPayrollDto: CreatePayrollDto,
+    @Body() createDepartmentDto: CreateDepartmentDto,
     @Res() res: Response,
   ) {
     try {
-      const payroll = await this.payrollService.create(createPayrollDto);
+      const department = await this.departmentService.create(
+        createDepartmentDto,
+      );
       return res
         .send({
-          data: payroll,
-          message: 'payroll created successfully',
+          data: department,
+          message: 'department saved successfully',
           status: true,
         })
         .status(201);
@@ -46,12 +48,12 @@ export class PayrollController {
 
   @Get()
   async findAll(@Res() res: Response) {
-    const payrollList = await this.payrollService.findAll();
     try {
+      const departmentlist = await this.departmentService.findAll();
       return res
         .send({
-          data: payrollList,
-          message: 'payroll list successfully',
+          data: departmentlist,
+          message: 'department fetched successfully',
           status: true,
         })
         .status(200);
@@ -68,12 +70,12 @@ export class PayrollController {
 
   @Get(':id')
   async findOne(@Param('id') id: string, @Res() res: Response) {
-    const payroll = await this.payrollService.findOne(id);
     try {
+      const department = await this.departmentService.findOne(id);
       return res
         .send({
-          data: payroll,
-          message: 'payroll list successfully',
+          data: department,
+          message: 'department fetched successfully',
           status: true,
         })
         .status(200);
@@ -91,15 +93,16 @@ export class PayrollController {
   @Patch(':id')
   async update(
     @Param('id') id: string,
-    @Body() updatePayrollDto: UpdatePayrollDto,
+    @Body() updateDepartmentDto: UpdateDepartmentDto,
     @Res() res: Response,
   ) {
-    const payroll = await this.payrollService.update(id, updatePayrollDto);
+    // return this.departmentService.update(+id, updateDepartmentDto);
     try {
+      await this.departmentService.update(id, updateDepartmentDto);
       return res
         .send({
-          data: payroll,
-          message: 'payroll updated successfully',
+          data: null,
+          message: 'department updated successfully',
           status: true,
         })
         .status(200);
@@ -116,12 +119,12 @@ export class PayrollController {
 
   @Delete(':id')
   async remove(@Param('id') id: string, @Res() res: Response) {
-    const payroll = await this.payrollService.remove(id);
     try {
+      await this.departmentService.remove(id);
       return res
         .send({
-          data: payroll,
-          message: 'payroll deleted successfully',
+          data: null,
+          message: 'department deleted successfully',
           status: true,
         })
         .status(200);

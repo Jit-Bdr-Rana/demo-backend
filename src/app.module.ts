@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { EmployeeModule } from './core/employee/employee.module';
 import { PayrollModule } from './core/payroll/payroll.module';
+import { DepartmentModule } from './core/department/department.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { PayrollModule } from './core/payroll/payroll.module';
     // all the module that comes in future need to be  import over here
     EmployeeModule,
     PayrollModule,
+    DepartmentModule,
   ],
   controllers: [AppController],
   providers: [AppService],

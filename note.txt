@@ -14,3 +14,6 @@ npm install --save @nestjs/swagger
 
 run script
 npm run start:dev
+
+generate resource controller,entitty,dto serveice and modeule
+nest g resource  resource-name --no-spec
