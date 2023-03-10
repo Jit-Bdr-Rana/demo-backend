@@ -5,6 +5,8 @@ import { AppService } from './app.service';
 import { EmployeeModule } from './core/employee/employee.module';
 import { PayrollModule } from './core/payroll/payroll.module';
 import { DepartmentModule } from './core/department/department.module';
+import { AuthModule } from './core/auth/auth.module';
+import { UserModule } from './core/user/user.module';
 
 @Module({
   imports: [
@@ -14,6 +16,8 @@ import { DepartmentModule } from './core/department/department.module';
     EmployeeModule,
     PayrollModule,
     DepartmentModule,
+    AuthModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
