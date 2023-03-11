@@ -24,6 +24,9 @@ export class UserService {
   findOne(id: string) {
     return this.userModal.findOne({ _id: id });
   }
+  findOneByEmail(email: string) {
+    return this.userModal.findOne({ email: email }).exec();
+  }
 
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
