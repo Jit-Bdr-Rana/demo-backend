@@ -42,8 +42,9 @@ export class EmployeeController {
   async findAll(@Res() response: Response) {
     try {
       console.log(process?.env?.jwt_secret);
+
       const allEmployee = await this.employeeService.findAll();
-      response.send({ data: allEmployee, message: 'success' }).status(201);
+      response.send({ data: allEmployee, message: 'sccess' }).status(201);
     } catch (e) {
       response
         .send({ data: null, message: 'internal server error' })

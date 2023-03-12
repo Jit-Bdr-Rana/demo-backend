@@ -8,7 +8,7 @@ export class AppController {
   /*indicate default  route  like pages/index.tsx in nextjs project
     url: http://localhost:5000/ will hit this function 
   */
-  @Get()
+  @Get('/home')
   getHello(): string {
     return this.appService.getHello();
   }
