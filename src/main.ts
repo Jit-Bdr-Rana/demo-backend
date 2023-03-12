@@ -1,12 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
-import * as dotenv from 'dotenv';
+import { config } from 'dotenv';
+config();
 async function bootstrap() {
   //this line create nest instance that contain our appmodule and which  conatain all the future comming module
   const app = await NestFactory.create(AppModule);
   //.env config
-  dotenv.config();
 
   /*chill it's noting but swagger ui configuration
      start

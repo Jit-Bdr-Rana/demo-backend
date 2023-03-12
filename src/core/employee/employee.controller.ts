@@ -13,6 +13,7 @@ import { CreateEmployeeDto } from './dto/create-employee.dto';
 import { UpdateEmployeeDto } from './dto/update-employee.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
+import { Public } from 'src/constraints/meta.constraints';
 //all the business logic for employee related
 //global prefix (employee) for employee module
 @Controller('employee')
@@ -37,8 +38,10 @@ export class EmployeeController {
   }
   //  url: http://localhost:5000/employee will hit this function using get method
   @Get()
+  @Public()
   async findAll(@Res() response: Response) {
     try {
+      console.log(process?.env?.jwt_secret);
       const allEmployee = await this.employeeService.findAll();
       response.send({ data: allEmployee, message: 'success' }).status(201);
     } catch (e) {

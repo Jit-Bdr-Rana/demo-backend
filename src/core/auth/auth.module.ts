@@ -14,7 +14,14 @@ import { JwtStrategy } from './jwt.strategy';
     PassportModule.register({
       defaultStrategy: 'local',
     }),
-    JwtModule,
+    JwtModule.register({
+      secret: process?.env?.jwt_secret || 'secret',
+      signOptions: {
+        expiresIn: '1h',
+      },
+    }),
   ],
 })
-export class AuthModule {}
+export class AuthModule {
+  constructor() {}
+}
